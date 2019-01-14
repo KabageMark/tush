@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{{block.super}}
+
+<div class="shopping-cart">
+
+    <h1>Shopping Cart</h1>
+
+    <div class="column-labels">
+      <label class="product-image">Image</label>
+      <label class="product-details">Product</label>
+      <label class="product-price">Price</label>
+      <label class="product-quantity">Remove</label>
+      
+      <label class="product-line-price">Total</label>
+    </div>
+    {% if items %}
+{% for item in items %}
+{% if item.user == request.user %}
+
+
+  <div class="product">
+    <div class="product-image">
+      <img src="{{item.item.picture.url}}">
+    </div>
+    <div class="product-details">
+      <div class="product-title">{{item.item.name}}</div>
+      <p class="product-description">{{item.item.description}}</p>
+    </div>
+    <div class="product-price">{{item.item.price}}.00</div>
+    
+    <div class="product-removal">
+      <button class="remove-product">
+       <a href="/remove/{{item.id}}">Remove</a>
+      </button>
+    </div>
+    <div class="product-line-price">{{item.item.price}}.00</div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  
+  <div class="totals">
+  
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">{{total}}.00</div>
+    </div>
+  </div>
+  <form action="/m-pesa/" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+<button  type='submit'class="btn">Checkout</button>
+</form>
+
+<a href="/empty">
+      <button class="btn btn-coutline-primary">Empty Cart</button>
+    </a>
+</div>
+{% else %}
+<h1>Cart is Empty</h1>
+{% endif %}
+{% endblock %}

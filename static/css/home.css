@@ -1,0 +1,47 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 100%;
+}
+
+.grid {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.product {
+  float: left;
+  width: 29.3333%;
+  padding: 1em;
+  margin: 2%;
+  text-align: center;
+  border: solid 1px transparent;
+}
+.product:hover {
+  border: solid 1px #ddd;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 0.9em;
+}
+h6 {
+  margin: 0;
+  font-size: 0.85em;
+  font-weight: normal;
+}
+p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.85em;
+}

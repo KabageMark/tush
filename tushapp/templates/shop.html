@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+<div class="container-fluid">
+    <center><h1>T-shirts</h1></center>
+<div class="row">
+  {% for tshirt in tshirts %} 
+  <div class="col-md-4">    
+      <div class="card" style="width: 18rem; height: 25rem;">
+        <img class="card-img-top" src="{{tshirt.image.url}}" alt="Card image cap" style="height: 25rem;">
+        <div class="card-body">
+            <h4 class="card-title">{{tshirt.name}}</h4>
+            <p class="card-text">{{tshirt.price}}</p>
+             <form action="/add/{{tshirt.id}}/" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+            <button  type='submit'class="btn">Add to Cart</button>
+            </form>
+            
+        </div>
+      </div> 
+</div>
+{% endfor %} 
+</div>
+
+<center><h1>Jeans</h1></center>
+<div class="row">
+    {% for jeans in jeans %} 
+    <div class="col-md-4">    
+        <div class="card" style="width: 18rem; height: 25rem;">
+          <img class="card-img-top" src="{{jeans.image.url}}" alt="Card image cap" style="height: 25rem;">
+          <div class="card-body">
+              <h4 class="card-title">{{jeans.name}}</h4>
+              <p class="card-text">{{jeans.price}}</p>
+              <form action="/add/{{jeans.id}}/" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+            <button  type='submit'class="btn">Add to Cart</button>
+            </form>
+          </div>
+        </div> 
+  </div>
+  {% endfor %} 
+  </div>
+
+</div>     
+  {% endblock %}
